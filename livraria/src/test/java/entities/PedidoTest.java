@@ -20,7 +20,7 @@ class PedidoTest {
 
         Pedido pedido = new Pedido(produtos);
 
-        assertEquals(7.7, pedido.calcularPesoTotalPedido(produtos));
+        assertEquals(7.7, pedido.calcularPesoTotalPedido());
     }
 
     @Test
@@ -32,7 +32,7 @@ class PedidoTest {
 
         Pedido pedido1 = new Pedido(produtos1);
 
-        double pesoTotal1 = pedido1.calcularPesoTotalPedido(produtos1);
+        double pesoTotal1 = pedido1.calcularPesoTotalPedido();
         Exception exception = assertThrows(Exception.class, () -> pedido1.calcularValorFrete(TipoEntrega.PAC, pesoTotal1));
 
         assertEquals("Não aceitamos entregas maiores que 2kg e nem pedidos sem pesagem!", exception.getMessage());
@@ -43,7 +43,7 @@ class PedidoTest {
 
         Pedido pedido2 = new Pedido(produtos2);
 
-        double pesoTotal2 = pedido2.calcularPesoTotalPedido(produtos2);
+        double pesoTotal2 = pedido2.calcularPesoTotalPedido();
 
         assertEquals(10, pedido2.calcularValorFrete(TipoEntrega.PAC, pesoTotal2));
 
@@ -53,7 +53,7 @@ class PedidoTest {
 
         Pedido pedido3 = new Pedido(produtos3);
 
-        double pesoTotal3 = pedido3.calcularPesoTotalPedido(produtos3);
+        double pesoTotal3 = pedido3.calcularPesoTotalPedido();
 
         assertEquals(15, pedido3.calcularValorFrete(TipoEntrega.PAC, pesoTotal3));
     }
@@ -67,7 +67,7 @@ class PedidoTest {
 
         Pedido pedido1 = new Pedido(produtos1);
 
-        double pesoTotal1 = pedido1.calcularPesoTotalPedido(produtos1);
+        double pesoTotal1 = pedido1.calcularPesoTotalPedido();
         Exception exception = assertThrows(Exception.class, () -> pedido1.calcularValorFrete(TipoEntrega.SEDEX, pesoTotal1));
         assertEquals("Não aceitamos pedidos sem pesagem!", exception.getMessage());
 
@@ -77,7 +77,7 @@ class PedidoTest {
 
         Pedido pedido2 = new Pedido(produtos2);
 
-        double pesoTotal2 = pedido2.calcularPesoTotalPedido(produtos2);
+        double pesoTotal2 = pedido2.calcularPesoTotalPedido();
         assertEquals(12.50, pedido2.calcularValorFrete(TipoEntrega.SEDEX, pesoTotal2));
 
         List<Produto> produtos3 = new ArrayList<>();
@@ -86,7 +86,7 @@ class PedidoTest {
 
         Pedido pedido3 = new Pedido(produtos3);
 
-        double pesoTotal3 = pedido3.calcularPesoTotalPedido(produtos3);
+        double pesoTotal3 = pedido3.calcularPesoTotalPedido();
         assertEquals(20, pedido3.calcularValorFrete(TipoEntrega.SEDEX, pesoTotal3));
 
         List<Produto> produtos4 = new ArrayList<>();
@@ -95,7 +95,7 @@ class PedidoTest {
 
         Pedido pedido4 = new Pedido(produtos4);
 
-        double pesoTotal4 = pedido4.calcularPesoTotalPedido(produtos4);
+        double pesoTotal4 = pedido4.calcularPesoTotalPedido();
         double frete4 = 46.50 + ((pesoTotal4 - 1) / 0.1) * 1.5;
         assertEquals(frete4, pedido4.calcularValorFrete(TipoEntrega.SEDEX, pesoTotal4));
     }
@@ -109,7 +109,7 @@ class PedidoTest {
 
         Pedido pedido1 = new Pedido(produtos1);
 
-        double pesoTotal1 = pedido1.calcularPesoTotalPedido(produtos1);
+        double pesoTotal1 = pedido1.calcularPesoTotalPedido();
 
 
         assertEquals(0, pedido1.calcularValorFrete(TipoEntrega.RETIRADA, pesoTotal1));
@@ -120,7 +120,7 @@ class PedidoTest {
 
         Pedido pedido2 = new Pedido(produtos2);
 
-        double pesoTotal2 = pedido2.calcularPesoTotalPedido(produtos2);
+        double pesoTotal2 = pedido2.calcularPesoTotalPedido();
 
         assertEquals(0, pedido2.calcularValorFrete(TipoEntrega.RETIRADA, pesoTotal2));
 
@@ -130,7 +130,7 @@ class PedidoTest {
 
         Pedido pedido3 = new Pedido(produtos3);
 
-        double pesoTotal3 = pedido3.calcularPesoTotalPedido(produtos3);
+        double pesoTotal3 = pedido3.calcularPesoTotalPedido();
 
         assertEquals(0, pedido3.calcularValorFrete(TipoEntrega.RETIRADA, pesoTotal3));
     }
@@ -140,7 +140,7 @@ class PedidoTest {
         Produto p1 = new Produto("Livro", 20.0, 0.5);
         List<Produto> produtos = Arrays.asList(p1);
         Pedido pedido = new Pedido(produtos);
-        double pesoTotal = pedido.calcularPesoTotalPedido(produtos);
+        double pesoTotal = pedido.calcularPesoTotalPedido();
 
         assertEquals(10, pedido.calcularValorFrete(TipoEntrega.PAC, pesoTotal));
         assertEquals(12.50, pedido.calcularValorFrete(TipoEntrega.SEDEX, pesoTotal));

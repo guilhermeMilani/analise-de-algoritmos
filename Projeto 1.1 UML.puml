@@ -1,0 +1,56 @@
+@startuml
+class entities.Pedido {
+- List<Produto> produtos
++ List<Produto> getProdutos()
++ void setProdutos(List<Produto>)
++ double calcularPesoTotalPedido()
++ double calcularValorFrete(TipoEntrega,double)
+}
+
+
+enum enums.TipoEntrega {
++  PAC
++  RETIRADA
++  SEDEX
+}
+
+class entities.PedidoTest {
+~ void calcularPesoTotalPedido()
+~ void calcularFretePac()
+~ void calcularFreteSedex()
+~ void calcularFreteRetirada()
++ void testCalcularValorPedidoSemTipoEntrega()
+}
+
+class org.example.Main {
++ {static} void main(String[])
+}
+
+class entities.Sedex {
++ {static} double calcularFrete(double)
+}
+
+class entities.Produto {
+- String nome
+- double valor
+- double peso
++ String getNome()
++ void setNome(String)
++ double getValor()
++ void setValor(double)
++ double getPeso()
++ void setPeso(double)
+}
+
+
+class entities.Pac {
++ {static} double calcularFrete(double)
+}
+
+class entities.Retirada {
++ {static} double calcularFrete(double)
+}
+
+Pedido ->  Produto : possui
+
+@enduml

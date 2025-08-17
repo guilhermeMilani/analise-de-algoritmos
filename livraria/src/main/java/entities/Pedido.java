@@ -22,7 +22,7 @@ public class Pedido {
 		this.produtos = produtos;
 	}
 
-	public double calcularPesoTotalPedido(List<Produto> produtos){
+	public double calcularPesoTotalPedido(){
 		double pesoTotal = 0.0;
 		for(Produto produto : produtos){
 			pesoTotal += produto.getPeso();
