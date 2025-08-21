@@ -1,9 +1,9 @@
 package entities;
 
-public class Retirada {
-
-	public static double calcularFrete(double peso) throws Exception {
+public class Retirada implements TipoEnvio{
+    
+        @Override
+	public double calcularFrete(double peso) throws Exception {
 		return 0;
 	}
-
 }

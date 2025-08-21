@@ -5,7 +5,6 @@ public class Produto {
 	private double valor;
 	private double peso;
 	
-	
 	public Produto() {
 	}
 	public Produto(String nome, double valor, double peso) {
@@ -38,7 +37,4 @@ public class Produto {
 	public void setPeso(double peso) {
 		this.peso = peso;
 	}
-	
-	
-
 }
