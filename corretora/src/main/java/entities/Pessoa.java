@@ -22,34 +22,39 @@ public class Pessoa implements Observer {
     public void setNome(String nome) {
         this.nome = nome;
     }
+    public void registrarEmUmaAcao(Acao acao){
+        acao.adicionarObservador(this);
+    }
+
+    public void removerRegistroDeUmaAcao(Acao acao){
+        acao.removerObservador(this);
+    }
 
     public void registrarOrdem(Acao acao, double valor, TipoOrdem tipoOrdem){
-        if (tipoOrdem == TipoOrdem.COMPRA){
-            Ordem ordem = new Ordem(nome, TipoOrdem.COMPRA, valor);
-            Optional<Ordem> ordemEncontrada = acao.getOrdens().stream()
-                    .filter(ordem1 -> ordem1.getValor() == ordem.getValor() && ordem1.getTipoOrdem() == ordem.getTipoOrdem())
-                    .findFirst();
-            if (ordemEncontrada.isPresent()){
-                acao.setValor(valor);
-            }else {
-                acao.getOrdens().add(ordem);
-            }
-        }
-        if (tipoOrdem == TipoOrdem.VENDA){
-            Ordem ordem = new Ordem(nome, TipoOrdem.VENDA, valor);
-            Optional<Ordem> ordemEncontrada = acao.getOrdens().stream()
-                    .filter(ordem1 -> ordem1.getValor() == ordem.getValor() && ordem1.getTipoOrdem() == ordem.getTipoOrdem())
-                    .findFirst();
-            if (ordemEncontrada.isPresent()){
-                acao.setValor(valor);
-            }else {
-                acao.getOrdens().add(ordem);
-            }
+        processarOrdem(acao,valor,tipoOrdem);
+    }
+
+    public void processarOrdem(Acao acao, double valor, TipoOrdem tipoOrdem){
+        Ordem ordem = new Ordem(nome, tipoOrdem, valor);
+        Optional<Ordem> ordemEncontrada = acao.encontrarOrdem(ordem);
+        if (ordemEncontrada.isPresent()){
+            acao.setValor(valor);
+            acao.excluirOrdem(tipoOrdem);
+            acao.notificarObservadores();
+        }else {
+            acao.getOrdens().add(ordem);
         }
     }
 
     @Override
     public void receberAtualizacaoDeUmaAcao(Acao acao){
         System.out.println("A ação " + acao.getNome() + " recebeu uma atualização no seu valor, agora ela vale R$" + acao.getValor());
+    }
+
+    @Override
+    public String toString() {
+        return "Pessoa{" +
+                "nome='" + nome + '\'' +
+                '}';
     }
 }
