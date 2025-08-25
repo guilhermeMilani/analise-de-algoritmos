@@ -1,0 +1,63 @@
+@startuml
+class entities.Acao {
+- String nome
+- double valor
+- List<Ordem> ordens
+- List<Observer> observers
++ String getNome()
++ void setNome(String)
++ double getValor()
++ void setValor(double)
++ List<Ordem> getOrdens()
++ List<Observer> getObservers()
++ void adicionarObservador(Observer)
++ void removerObservador(Observer)
++ void notificarObservadores()
++ void excluirOrdem(TipoOrdem)
++ Optional<Ordem> encontrarOrdem(Ordem)
++ String toString()
+}
+
+
+interface interfaces.Observer {
+~ void receberAtualizacaoDeUmaAcao(Acao)
+}
+
+enum enums.TipoOrdem {
++  COMPRA
++  VENDA
+}
+
+class entities.Pessoa {
+- String nome
++ String getNome()
++ void setNome(String)
++ void registrarEmUmaAcao(Acao)
++ void removerRegistroDeUmaAcao(Acao)
++ void registrarOrdem(Acao,double,TipoOrdem)
++ void processarOrdem(Acao,double,TipoOrdem)
++ void receberAtualizacaoDeUmaAcao(Acao)
++ String toString()
+}
+
+
+class entities.Ordem {
+- String nomeInvestidor
+- TipoOrdem tipoOrdem
+- double valor
++ String getNomeInvestidor()
++ void setNomeInvestidor(String)
++ TipoOrdem getTipoOrdem()
++ void setTipoOrdem(TipoOrdem)
++ double getValor()
++ void setValor(double)
++ String toString()
+}
+
+
+
+
+interfaces.Observer <|.. entities.Pessoa
+entities.Pessoa <|-- entities.Acao: possui 0 ou mais
+entities.Ordem <|-- entities.Acao: possui 0 ou mais
+@enduml
