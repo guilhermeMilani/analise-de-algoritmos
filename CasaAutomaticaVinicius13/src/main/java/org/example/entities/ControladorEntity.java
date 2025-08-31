@@ -11,13 +11,13 @@ public class ControladorEntity {
     private List<LampadaInterface>  lampadas;
     private  List<ArCondicionadoInterface> arCondicionados;
 
-    public void AbrirPersianas() throws Exception {
+    public void abrirPersianas() throws Exception {
         for(PersianaInterface persiana : persianas){
             persiana.abrir();
         }
     }
 
-    public void FecharPersianas() throws Exception {
+    public void fecharPersianas() throws Exception {
         for(PersianaInterface persiana : persianas){
             persiana.fechar();
         }
@@ -68,5 +68,16 @@ public class ControladorEntity {
         }
     }
 
+    public void modoSono() throws Exception {
+        fecharPersianas();
+        desligarLampadas();
+        desligarArCondicionados();
+    }
 
+    public void modoTrabalho() throws Exception {
+        ligarLampadas();
+        ligarArCondicionados();
+        definirTemperaturaArCondicionados(25);
+        abrirPersianas();
+    }
 }
