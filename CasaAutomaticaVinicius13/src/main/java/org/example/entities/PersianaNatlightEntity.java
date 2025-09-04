@@ -2,7 +2,6 @@ package org.example.entities;
 
 import br.furb.analise.algoritmos.PersianaNatLight;
 import br.furb.analise.algoritmos.PersianaSolarius;
-import org.example.enums.TipoPersiana;
 import org.example.interfaces.PersianaInterface;
 
 public class PersianaNatlightEntity implements PersianaInterface {
