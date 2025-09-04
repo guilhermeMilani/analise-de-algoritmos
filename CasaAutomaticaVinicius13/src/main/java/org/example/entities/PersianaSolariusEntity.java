@@ -5,6 +5,11 @@ import org.example.interfaces.PersianaInterface;
 
 public class PersianaSolariusEntity implements PersianaInterface {
     private PersianaSolarius persianaSolarius;
+
+    public PersianaSolariusEntity(PersianaSolarius persianaSolarius) {
+        this.persianaSolarius = persianaSolarius;
+    }
+
     @Override
     public void abrir() throws Exception {
         if (!persianaSolarius.estaAberta())

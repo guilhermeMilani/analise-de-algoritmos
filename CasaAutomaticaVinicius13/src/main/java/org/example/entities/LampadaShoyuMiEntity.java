@@ -5,6 +5,11 @@ import org.example.interfaces.LampadaInterface;
 
 public class LampadaShoyuMiEntity implements LampadaInterface {
     private LampadaShoyuMi lampadaShoyuMi;
+
+    public LampadaShoyuMiEntity(LampadaShoyuMi lampadaShoyuMi) {
+        this.lampadaShoyuMi = lampadaShoyuMi;
+    }
+
     @Override
     public void ligar() {
         if (!lampadaShoyuMi.estaLigada())

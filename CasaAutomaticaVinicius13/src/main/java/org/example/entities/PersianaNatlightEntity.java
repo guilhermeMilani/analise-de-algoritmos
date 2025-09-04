@@ -8,7 +8,7 @@ public class PersianaNatlightEntity implements PersianaInterface {
     private PersianaNatLight persianaNatLights;
 
 
-    public PersianaNatlightEntity(PersianaNatLight persianaNatLights, PersianaSolarius persianaSolarius) {
+    public PersianaNatlightEntity(PersianaNatLight persianaNatLights) {
         this.persianaNatLights = persianaNatLights;
     }
 

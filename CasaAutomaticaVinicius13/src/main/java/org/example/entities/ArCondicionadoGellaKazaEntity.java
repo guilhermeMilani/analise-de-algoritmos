@@ -6,6 +6,10 @@ import org.example.interfaces.ArCondicionadoInterface;
 public class ArCondicionadoGellaKazaEntity implements ArCondicionadoInterface {
     private ArCondicionadoGellaKaza arCondicionadoGellaKaza;
 
+    public ArCondicionadoGellaKazaEntity(ArCondicionadoGellaKaza arCondicionadoGellaKaza) {
+        this.arCondicionadoGellaKaza = arCondicionadoGellaKaza;
+    }
+
     @Override
     public void desligar() {
         arCondicionadoGellaKaza.desativar();

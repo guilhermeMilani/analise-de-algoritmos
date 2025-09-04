@@ -4,12 +4,19 @@ import org.example.interfaces.ArCondicionadoInterface;
 import org.example.interfaces.LampadaInterface;
 import org.example.interfaces.PersianaInterface;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ControladorEntity {
     private List<PersianaInterface> persianas;
     private List<LampadaInterface>  lampadas;
     private  List<ArCondicionadoInterface> arCondicionados;
+
+    public ControladorEntity(List<PersianaInterface> persianas, List<LampadaInterface> lampadas, List<ArCondicionadoInterface> arCondicionados) {
+        this.persianas = persianas;
+        this.lampadas = lampadas;
+        this.arCondicionados = arCondicionados;
+    }
 
     public void abrirPersianas() throws Exception {
         for(PersianaInterface persiana : persianas){

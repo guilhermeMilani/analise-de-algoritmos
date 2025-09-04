@@ -7,6 +7,10 @@ import org.example.interfaces.ArCondicionadoInterface;
 public class ArCondicionadoVentoBaumnEntity implements ArCondicionadoInterface {
     private ArCondicionadoVentoBaumn arCondicionadoVentoBaumn;
 
+    public ArCondicionadoVentoBaumnEntity(ArCondicionadoVentoBaumn arCondicionadoVentoBaumn) {
+        this.arCondicionadoVentoBaumn = arCondicionadoVentoBaumn;
+    }
+
     @Override
     public void desligar() {
         arCondicionadoVentoBaumn.desligar();
