@@ -1,0 +1,96 @@
+@startuml
+class entities.LampadaPhellipesEntity {
+- LampadaPhellipes lampadaPhellipes
++ void ligar()
++ void desligar()
+}
+
+
+class entities.PersianaSolariusEntity {
+- PersianaSolarius persianaSolarius
++ void abrir()
++ void fechar()
+}
+
+
+class entities.PersianaNatlightEntity {
+- PersianaNatLight persianaNatLights
++ void abrir()
++ void fechar()
+}
+
+
+class entities.ArCondicionadoVentoBaumnEntity {
+- ArCondicionadoVentoBaumn arCondicionadoVentoBaumn
++ void desligar()
++ void ligar()
++ void diminuirTemperatura()
++ void aumentarTemperatura()
++ void definirTemperatura(int)
+}
+
+
+interface interfaces.LampadaInterface {
+~ void ligar()
+~ void desligar()
+}
+
+interface interfaces.PersianaInterface {
+~ void abrir()
+~ void fechar()
+}
+
+class entities.ControladorEntity {
+- List<PersianaInterface> persianas
+- List<LampadaInterface> lampadas
+- List<ArCondicionadoInterface> arCondicionados
++ void AbrirPersianas()
++ void FecharPersianas()
++ void addLampada(LampadaInterface)
++ void ligarLampadas()
++ void desligarLampadas()
++ void desligarArCondicionados()
++ void ligarArCondicionados()
++ void aumentarTemperaturaArCondicionados()
++ void diminuirTemperaturaArCondicionados()
++ void definirTemperaturaArCondicionados(int)
+}
+
+
+interface interfaces.ArCondicionadoInterface {
+~ void desligar()
+~ void ligar()
+~ void diminuirTemperatura()
+~ void aumentarTemperatura()
+~ void definirTemperatura(int)
+}
+
+class entities.ArCondicionadoGellaKazaEntity {
+- ArCondicionadoGellaKaza arCondicionadoGellaKaza
++ void desligar()
++ void ligar()
++ void diminuirTemperatura()
++ void aumentarTemperatura()
++ void definirTemperatura(int)
+}
+
+
+class entities.LampadaShoyuMiEntity {
+- LampadaShoyuMi lampadaShoyuMi
++ void ligar()
++ void desligar()
+}
+
+
+
+
+interfaces.LampadaInterface <|.. entities.LampadaPhellipesEntity
+interfaces.PersianaInterface <|.. entities.PersianaSolariusEntity
+interfaces.PersianaInterface <|.. entities.PersianaNatlightEntity
+interfaces.ArCondicionadoInterface <|.. entities.ArCondicionadoVentoBaumnEntity
+interfaces.ArCondicionadoInterface <|.. entities.ArCondicionadoGellaKazaEntity
+interfaces.LampadaInterface <|.. entities.LampadaShoyuMiEntity
+interfaces.LampadaInterface <|-- entities.ControladorEntity : possui 0 ou mais
+interfaces.PersianaInterface <|-- entities.ControladorEntity : possui 0 ou mais
+interfaces.ArCondicionadoInterface <|-- entities.ControladorEntity : possui 0 ou mais
+@enduml
